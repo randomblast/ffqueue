@@ -5,6 +5,22 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
+#define QUEUE_FILE        "./ffqueue/queue"
+#define EXIT_PREFIX       "./ffqueue/exit-"
+#define PROGRESS_PREFIX   "./ffqueue/progress-"
+
+char *cmd(char *line);
+void read_queue();
+
+int main(int argc, char **argv)
+{
+  while(1)
+  {
+    read_queue();
+    sleep(10);
+  }
+}
+
 /**
  * Turns a urlencoded array into an ffmpeg command.
  * @param line The string to decode.
@@ -58,10 +74,24 @@ char *cmd(char *line)
   return cmd;
 }
 
-int main(int argc, char **argv)
+/**
+ * Read in commands from the queue and start executing them.
+ */
+void read_queue()
 {
-  // Test case for cmd()
-  if(argc > 1)
-    printf("%s\n", cmd(argv[1]));
+  FILE *qfp; 
+
+  if(!(qfp = fopen(QUEUE_FILE, "r")))
+    return;
+
+  char *line = malloc(1024); // TODO make this global/static
+  
+  while(NULL != (fgets(line, 1024, qfp)))
+  {
+    // cmd(line);
+  }
+
+  free(line);
+  fclose(qfp);
 }
 
