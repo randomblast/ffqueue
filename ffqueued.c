@@ -5,9 +5,9 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
-#define QUEUE_FILE        "./ffqueue/queue"
-#define EXIT_PREFIX       "./ffqueue/exit-"
-#define PROGRESS_PREFIX   "./ffqueue/progress-"
+#define QUEUE_FILE        "queue"
+#define EXIT_PREFIX       "exit-"
+#define PROGRESS_PREFIX   "progress-"
 
 char *cmd(char *line);
 void read_queue();
