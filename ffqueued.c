@@ -12,6 +12,7 @@
 char *cmd(char *line);
 void read_queue();
 
+// {{{ int main(int argc, char **argv)
 int main(int argc, char **argv)
 {
   while(1)
@@ -20,7 +21,8 @@ int main(int argc, char **argv)
     sleep(10);
   }
 }
-
+// }}}
+// {{{ char *cmd(char *line)
 /**
  * Turns a urlencoded array into an ffmpeg command.
  * @param line The string to decode.
@@ -73,7 +75,8 @@ char *cmd(char *line)
 
   return cmd;
 }
-
+// }}}
+// {{{ void read_queue()
 /**
  * Read in commands from the queue and start executing them.
  */
@@ -94,4 +97,5 @@ void read_queue()
   free(line);
   fclose(qfp);
 }
+// }}}
 
