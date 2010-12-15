@@ -11,6 +11,8 @@
 
 char *cmd(char *line);
 void read_queue();
+void update_progress();
+void check_exits();
 
 // {{{ int main(int argc, char **argv)
 int main(int argc, char **argv)
@@ -18,6 +20,8 @@ int main(int argc, char **argv)
   while(1)
   {
     read_queue();
+    update_progress();
+    check_exits();
     sleep(10);
   }
 }
@@ -96,6 +100,22 @@ void read_queue()
 
   free(line);
   fclose(qfp);
+}
+// }}}
+// {{{ void update_progress()
+/**
+ * Scrape ffmpeg output and update progress files
+ */
+void update_progress()
+{
+}
+// }}}
+// {{{ void check_exits()
+/**
+ * wait() on ffmpeg processes that have finished
+ */
+void check_exits()
+{
 }
 // }}}
 
