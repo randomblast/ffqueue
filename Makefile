@@ -1,2 +1,2 @@
 all:
-	gcc -g -o ffqueued ffqueued.c
+	gcc -g -lssl -o ffqueued ffqueued.c
